@@ -20,11 +20,21 @@ class App extends Component {
       })) //concat내장함수를 사용하여 새로운 배열에 데이터를 넣어준다
     });
   }
+
+  handleRemove = (id) => {
+    const { information } = this.state;
+    this.setState({
+      information : information.filter(info => info.id !== id)
+    });
+  }
   render() {
     return (
       <div>
         <PhoneForm onCreate = {this.handleCreate} />
-        <PhoneInfoList data = {this.state.information}/>
+        <PhoneInfoList
+          data = {this.state.information}
+          onRemove = {this.handleRemove}
+          />
       </div>
     );
   }
