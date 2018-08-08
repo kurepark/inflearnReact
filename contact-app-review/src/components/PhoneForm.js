@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class PhoneForm extends Component {
 
+    input = React.createRef();
     state = {
         name:'',
         phone: '',
@@ -19,7 +20,8 @@ class PhoneForm extends Component {
         this.setState({
             name: '',
             phone:'',
-        })
+        });
+        this.input.current.focus();
     }
 
     render() {
@@ -30,6 +32,7 @@ class PhoneForm extends Component {
                 placeholder="이름" 
                 onChange={this.handleChange} 
                 value={this.state.name} 
+                ref={this.input} //ref : dom에 직접 접근, 포커스, 스크롤, 돔의 크기, 외부라이브러리 등 dom에 직접적인 접근을 할 때 사용
                 />
                 <input 
                 name="phone" 

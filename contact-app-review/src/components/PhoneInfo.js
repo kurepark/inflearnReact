@@ -8,6 +8,14 @@ class PhoneInfo extends Component {
         phone:'',
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        if(this.state !== nextState) {
+            return true;
+        }
+        return this.props.info !== nextProps.info;
+    }
+    
+
     handleRemove = () => {
         const {info, onRemove} = this.props;
         onRemove(info.id);
@@ -36,6 +44,7 @@ class PhoneInfo extends Component {
             [e.target.name]: e.target.value
         })
     }
+
     render() {
         const {name, phone} = this.props.info;
         const { editing} = this.state;
@@ -46,6 +55,7 @@ class PhoneInfo extends Component {
             margin: '8px'
         }
 
+        console.log(name);
         return (
             <div style={style}>
                 {
